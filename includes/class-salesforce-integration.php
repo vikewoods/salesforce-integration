@@ -90,8 +90,20 @@ class Salesforce_Integration
     private function define_admin_hooks()
     {
         $plugin_admin = new Salesforce_Integration_Admin($this->get_salesforce_integration(), $this->get_version());
+
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+
+        // Add menu item
+        $this->loader->add_action('admin_menu', $plugin_admin, 'add_plugin_admin_menu');
+
+        // Add Settings link to the plugin
+        $plugin_basename = plugin_basename(plugin_dir_path(__DIR__) . $this->salesforce_integration . '.php');
+        $this->loader->add_filter('plugin_action_links_' . $plugin_basename, $plugin_admin, 'add_action_links');
+
+        // Save/Update our plugin options
+        $this->loader->add_action('admin_init', $plugin_admin, 'options_update');
+
     }
 
     /**

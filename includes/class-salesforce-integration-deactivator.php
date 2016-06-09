@@ -11,7 +11,10 @@
 
 class Salesforce_Integration_Deactivator
 {
-    public static function deactivate(){}
+    public static function deactivate()
+    {
+        return true;
+    }
 }
 
 ?>

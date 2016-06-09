@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 /*
  * Plugin activation
  */
-function activate_plugin_name()
+function activate_salesforce_integration()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/class-salesforce-integration-activator.php';
     Salesforce_Integration_Activator::activate();
@@ -32,7 +32,7 @@ function activate_plugin_name()
 /*
  * Plugin de-activator
  */
-function deactivate_plugin_name()
+function deactivate_salesforce_integration()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/class-salesforce-integration-deactivator.php';
     Salesforce_Integration_Deactivator::deactivate();
